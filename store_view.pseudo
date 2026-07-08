@@ -29,4 +29,10 @@ Function render_store()
     Print "--- All Products ---"
     display_products(ProductDatabase)
     
+    // Demonstrating the filter feature
+    Print "--- Filtered Products (Brand: TechCorp, Color: Black) ---"
+    CurrentFilters = { brand: "TechCorp", color: "Black" }
+    FilteredList = filter_products(CurrentFilters)
+    display_products(FilteredList)
+    
 End Function
