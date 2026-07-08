@@ -18,3 +18,7 @@ add_product("Hat", 8, 8, 4, 0.2, "Red", "OtherBrand")
 # Create sample users
 create_user("Alice", "alice@example.com", "password123")
 create_user("Bob", "bob@example.com", "password456")
+
+# Demonstrate login behavior
+print login_user("alice@example.com", "password123")
+print login_user("bob@example.com", "wrongpassword")
