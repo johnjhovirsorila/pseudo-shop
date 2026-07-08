@@ -3,6 +3,39 @@
 function display_products():
     print "Available products:"
 
+Import product_model.pseudo
+
+Function display_products(productListToRender)
+    If length of productListToRender == 0
+        Print "No products match your criteria."
+        Return
+
+    Print "================ STOREFRONT ================"
+    For Each product in productListToRender
+        Print "Name: " + product.name
+        Print "Price: $" + product.price
+        Print "Brand: " + product.brand + " | Color: " + product.color
+        Print "Dimensions (WxHxL): " + product.width + "x" + product.height + "x" + product.length
+        Print "Weight: " + product.weight + "kg"
+        Print "--------------------------------------------"
+    Print "============================================"
+End Function
+
+// Demonstration of Storefront Logic
+Function render_store()
+    Print "Welcome to Pseudo-Shop!"
+    
+    // Showing all products
+    Print "--- All Products ---"
+    display_products(ProductDatabase)
+    
+    // Demonstrating the filter feature
+    Print "--- Filtered Products (Brand: TechCorp, Color: Black) ---"
+    CurrentFilters = { brand: "TechCorp", color: "Black" }
+    FilteredList = filter_products(CurrentFilters)
+    display_products(FilteredList)
+    
+End Function
     for each product in get_all_products():
         print "Name: " + product.name
         print "Width: " + product.width
