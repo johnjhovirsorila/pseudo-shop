@@ -28,3 +28,7 @@ function add_product(name, width, height, length, weight, color, brand):
 
     add new_product to product_list
     return new_product
+
+# Return all currently stored products
+function get_all_products():
+    return product_list
