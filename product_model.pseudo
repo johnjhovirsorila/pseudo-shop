@@ -11,6 +11,20 @@
 #     brand: "Generic"
 # }
 
-# Placeholder product list
+# In-memory product storage
 product_list = []
 
+# Add a new product to the in-memory list
+function add_product(name, width, height, length, weight, color, brand):
+    new_product = {
+        name: name,
+        width: width,
+        height: height,
+        length: length,
+        weight: weight,
+        color: color,
+        brand: brand
+    }
+
+    add new_product to product_list
+    return new_product
