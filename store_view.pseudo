@@ -1,7 +1,7 @@
 # Displays product listings
 
-# Placeholder function:
-# function display_products()
+function display_products():
+    print "Available products:"
 
 Import product_model.pseudo
 
@@ -36,3 +36,100 @@ Function render_store()
     display_products(FilteredList)
     
 End Function
+    for each product in get_all_products():
+        print "Name: " + product.name
+        print "Width: " + product.width
+        print "Height: " + product.height
+        print "Length: " + product.length
+        print "Weight: " + product.weight
+        print "Color: " + product.color
+        print "Brand: " + product.brand
+        print "---"
+
+// file: product_model.pseudo
+
+CLASS Product
+    PROPERTIES:
+        // Core product identifiers
+        string name
+        float price
+        
+        // Physical dimensions required for Feature 1 filtering
+        float width
+        float height
+        float length
+        float weight
+        
+        // Categorical attributes for user search/filtering
+        string color
+        string brand
+
+    METHOD constructor(name, price, width, height, length, weight, color, brand):
+        // Map incoming arguments to the class properties upon creation
+        self.name = name
+        self.price = price
+        self.width = width
+        self.height = height
+        self.length = length
+        self.weight = weight
+        self.color = color
+        self.brand = brand
+    END METHOD
+END CLASS
+// file: product_controller.pseudo
+
+FUNCTION filter_products(filters_dict, product_list):
+    // Initialize an empty array to hold products that meet all criteria
+    filtered_list = EMPTY ARRAY
+    
+    FOR EACH product IN product_list:
+        // Assume the product matches until a filter condition fails
+        match = TRUE
+        
+        // Loop through the requested filters (e.g., {"color": "Red", "brand": "Nike"})
+        FOR EACH key, value IN filters_dict:
+            // If the product's attribute does not exactly match the requested filter, reject it
+            IF product[key] != value:
+                match = FALSE
+                BREAK // Optimization: stop checking other filters for this product
+            END IF
+        END FOR
+        
+        // If the match flag is still true after checking all filters, keep the product
+        IF match == TRUE:
+            APPEND product TO filtered_list
+        END IF
+    END FOR
+    
+    // Return the final narrowed-down list to the view
+    RETURN filtered_list
+END FUNCTION
+
+// file: store_view.pseudo
+
+IMPORT filter_products FROM product_controller.pseudo
+
+FUNCTION render_store():
+    // 1. Mock Data: Create a sample inventory to test our new model properties
+    all_products = [
+        NEW Product("Shirt", 15.99, 10, 15, 2, 0.5, "Red", "PseudoBrand"),
+        NEW Product("Pants", 25.99, 20, 40, 5, 1.2, "Blue", "PseudoBrand"),
+        NEW Product("Hat", 9.99, 8, 8, 4, 0.2, "Red", "OtherBrand")
+    ]
+    
+    // 2. Define Filters: Simulate a user selecting "Red" and "PseudoBrand" from a UI dropdown
+    active_filters = {
+        "color": "Red"   ,
+        "brand": "PseudoBrand"
+    }
+    
+    // 3. Apply Filters: Pass the criteria and the full inventory into our controller function
+    PRINT "Applying filters: Color = Red, Brand = PseudoBrand"
+    results = filter_products(active_filters, all_products)
+    
+    // 4. Display Results: Loop through the returned subset and render them to the screen
+    PRINT "Filtered Products:"
+    FOR EACH item IN results:
+        PRINT "- " + item.name + " (" + item.color + " / " + item.brand + ")"
+    END FOR
+END FUNCTION
