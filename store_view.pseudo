@@ -3,3 +3,20 @@
 # Placeholder function:
 # function display_products()
 
+Import product_model.pseudo
+
+Function display_products(productListToRender)
+    If length of productListToRender == 0
+        Print "No products match your criteria."
+        Return
+
+    Print "================ STOREFRONT ================"
+    For Each product in productListToRender
+        Print "Name: " + product.name
+        Print "Price: $" + product.price
+        Print "Brand: " + product.brand + " | Color: " + product.color
+        Print "Dimensions (WxHxL): " + product.width + "x" + product.height + "x" + product.length
+        Print "Weight: " + product.weight + "kg"
+        Print "--------------------------------------------"
+    Print "============================================"
+End Function
