@@ -22,3 +22,11 @@ create_user("Bob", "bob@example.com", "password456")
 # Demonstrate login behavior
 print login_user("alice@example.com", "password123")
 print login_user("bob@example.com", "wrongpassword")
+
+# Show the current list of products
+print "Available products:"
+for each product in get_all_products():
+    print "- " + product.name
+
+# Show the storefront view
+render_store()
