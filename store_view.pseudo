@@ -3,3 +3,34 @@
 # Placeholder function:
 # function display_products()
 
+// file: product_model.pseudo
+
+CLASS Product
+    PROPERTIES:
+        // Core product identifiers
+        string name
+        float price
+        
+        // Physical dimensions required for Feature 1 filtering
+        float width
+        float height
+        float length
+        float weight
+        
+        // Categorical attributes for user search/filtering
+        string color
+        string brand
+
+    METHOD constructor(name, price, width, height, length, weight, color, brand):
+        // Map incoming arguments to the class properties upon creation
+        self.name = name
+        self.price = price
+        self.width = width
+        self.height = height
+        self.length = length
+        self.weight = weight
+        self.color = color
+        self.brand = brand
+    END METHOD
+END CLASS
+
