@@ -1,8 +1,20 @@
 # Main entry point
 
 # This file ties together all components of the pseudo-shop
-# Feel free to modify this to simulate application flow
+# It simulates a simple app flow for users, products, and the storefront
+
+IMPORT add_product, get_all_products FROM product_model.pseudo
+IMPORT create_user, login_user FROM user_controller.pseudo
+IMPORT render_store FROM store_view.pseudo
 
 # Run the app
 print "Welcome to the Pseudo Shop!"
 
+# Create a few sample products
+add_product("Shirt", 10, 15, 2, 0.5, "Red", "PseudoBrand")
+add_product("Pants", 20, 40, 5, 1.2, "Blue", "PseudoBrand")
+add_product("Hat", 8, 8, 4, 0.2, "Red", "OtherBrand")
+
+# Create sample users
+create_user("Alice", "alice@example.com", "password123")
+create_user("Bob", "bob@example.com", "password456")
