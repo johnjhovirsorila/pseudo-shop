@@ -20,3 +20,13 @@ Function display_products(productListToRender)
         Print "--------------------------------------------"
     Print "============================================"
 End Function
+
+// Demonstration of Storefront Logic
+Function render_store()
+    Print "Welcome to Pseudo-Shop!"
+    
+    // Showing all products
+    Print "--- All Products ---"
+    display_products(ProductDatabase)
+    
+End Function
