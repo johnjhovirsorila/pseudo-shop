@@ -76,7 +76,7 @@ FUNCTION render_store():
     
     // 2. Define Filters: Simulate a user selecting "Red" and "PseudoBrand" from a UI dropdown
     active_filters = {
-        "color": "Red",
+        "color": "Red"   ,
         "brand": "PseudoBrand"
     }
     
