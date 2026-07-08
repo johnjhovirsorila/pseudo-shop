@@ -7,3 +7,16 @@ class User:
 
 # Simple in-memory structure to store user data
 registered_users_list = empty list
+
+# Create a new user and store them in memory
+function create_user(name, email, password):
+    # Check if the user already exists to prevent duplicates
+    for each current_user in registered_users_list:
+        if current_user.email equals email:
+            return "Failure: Email already registered"
+    
+    # Instantiate the new user and add to our list
+    new_user = instantiate User(name, email, password)
+    add new_user to registered_users_list
+    
+    return "Success: User successfully created"
