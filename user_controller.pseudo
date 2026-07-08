@@ -20,3 +20,17 @@ function create_user(name, email, password):
     add new_user to registered_users_list
     
     return "Success: User successfully created"
+
+# Authenticate a user using pseudo-credentials
+function login_user(email, password):
+    # Search for the user in our in-memory structure
+    for each current_user in registered_users_list:
+        if current_user.email equals email:
+            # Validate password
+            if current_user.password equals password:
+                return "Success"
+            else:
+                return "Failure: Incorrect password"
+                
+    # If the loop finishes without finding the email
+    return "Failure: User not found"
